@@ -82,6 +82,11 @@ public class StudentController {
         // No hacer nada con la x
     }
 
+    public void editfile2() {
+        int y = 10;
+        // No hacer nada con la x
+    }
+
 }
 
 // llllll{{{ñññl
