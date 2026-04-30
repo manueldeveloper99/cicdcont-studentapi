@@ -77,7 +77,7 @@ public class StudentController {
 
     }
 
-    public void metodoInutil() {
+    public void editfile() {
         int x = 10;
         // No hacer nada con la x
     }
