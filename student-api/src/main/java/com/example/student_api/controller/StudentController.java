@@ -9,20 +9,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
     private final StudentService studentService;
 
     @Autowired
-    public StudentController(StudentService studentService){
+    public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
 
     // GET /api/students - Get all Students
     @GetMapping
-    public ResponseEntity<List<Student>> getAllStudents(){
+    public ResponseEntity<List<Student>> getAllStudents() {
         List<Student> students = studentService.getAllStudents();
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
@@ -30,57 +29,60 @@ public class StudentController {
     // GET / api/ students/{id} - Get Students by ID
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(
-            @PathVariable Long id){
-        return studentService.getStudentById(id).map(student -> new ResponseEntity<>(student, HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+            @PathVariable Long id) {
+        return studentService.getStudentById(id).map(student -> new ResponseEntity<>(student, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-
-    //POST /api/stidents - Create a new Student
+    // POST /api/stidents - Create a new Student
 
     @PostMapping
     public ResponseEntity<Student> createStudent(
-            @RequestBody Student student){
-        try{
+            @RequestBody Student student) {
+        try {
             Student createdStudent = studentService.createStudent(student);
             return new ResponseEntity<>(
                     createdStudent, HttpStatus.CREATED);
 
-
-        } catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-    //hola
+    // hola
 
-// PUT /api/students/{id} - Update Student
+    // PUT /api/students/{id} - Update Student
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudent(
             @PathVariable Long id,
-            @RequestBody Student studentDetails){
-        try{
+            @RequestBody Student studentDetails) {
+        try {
             Student updatedStudent = studentService.updateStudent(id, studentDetails);
-                return new ResponseEntity<>(
-                        updatedStudent, HttpStatus.OK);
-            } catch (IllegalStateException e){
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
+            return new ResponseEntity<>(
+                    updatedStudent, HttpStatus.OK);
+        } catch (IllegalStateException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
 
-//DELETE /api/students/{id} - Delete Student
-        @DeleteMapping("/{id}")
-                public ResponseEntity<Void> deleteStudent(@PathVariable Long id){
+    // DELETE /api/students/{id} - Delete Student
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
 
-            try{
-                studentService.deleteStudent(id);
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            } catch (IllegalStateException e){
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-
+        try {
+            studentService.deleteStudent(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (IllegalStateException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
 
     }
 
-//llllll{{{ñññl
-//m
+    public void metodoInutil() {
+        int x = 10;
+        // No hacer nada con la x
+    }
+
+}
+
+// llllll{{{ñññl
+// m
