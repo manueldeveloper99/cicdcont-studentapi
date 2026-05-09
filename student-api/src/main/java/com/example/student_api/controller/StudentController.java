@@ -77,15 +77,14 @@ public class StudentController {
 
     }
 
-    /*
-     * public void editfile() {
-     * int x = 10;
-     * // No hacer nada con la x
-     * }
-     * 
-     * public void editfile2() {
-     * int y = 10;
-     * // No hacer nada con la x
-     * }
-     */
+    public void editfile() {
+        int x = 10;
+        // No hacer nada con la x
+    }
+
+    public void editfile2() {
+        int y = 10;
+        // No hacer nada con la x
+    }
+
 }
